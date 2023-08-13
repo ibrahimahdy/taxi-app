@@ -162,10 +162,9 @@ class CarControllerTest
     void delete_car() throws Exception
     {
         when(carService.delete(anyLong())).thenReturn(aDeletedCarDO());
-        var expected = aCarDTO();
         mockMvc.perform(delete(API_CAR + "/{carId}", CAR_ID)).
             andDo(print()).
-            andExpect(status().isOk()).andExpect(content().string(asJsonString(expected)));
+            andExpect(status().isNoContent());
     }
 
 

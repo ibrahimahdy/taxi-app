@@ -45,7 +45,8 @@ public class CarController
     @DeleteMapping("/{carId}")
     public ResponseEntity<CarDTO> deleteCar(@PathVariable long carId) throws EntityNotFoundException
     {
-        return ResponseEntity.ok(CarMapper.makeCarDTO(carService.delete(carId)));
+        carService.delete(carId);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{carId}")
